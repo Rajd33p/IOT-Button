@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
+    type="text/css"
+    /> -->
+    <style>
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #080710;
+        overflow: hidden;
+      }
+
+      .main {
+        height: 300px;
+        width: 500px;
+        background-color: rgba(255, 255, 255, 0.13);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 50px 35px;
+        display: flex;
+        justify-content: space-around; /* Horizontally spaced evenly */
+        align-items: center; /* Vertically centered */
+        flex-direction: column; /* Stack items vertically */
+      }
+
+      button {
+        width: 100px;
+        height: 100px;
+        background-color: #ffffff;
+        color: #080710;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .main-labels {
+        display: flex;
+        gap: 50px; /* Space between the two labels */
+      }
+
+      .main-labels label {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 16px;
+        width: 200px;
+        height: 75px;
+        background: #0000;
+        border-radius: 50px;
+        justify-content: center;
+      }
+
+
+
+      label input {
+        appearance: none;
+      }
+
+      label span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 75px;
+        height: 75px;
+        border: 1px solid #080710;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.13);
+        cursor: pointer;
+      }
+
+      label span svg {
+        color: #ffffff;
+        font-size: 2em;
+        transition: 1s;
+        width: 40px;
+        height: 40px;
+      }
+
+      label input[id="bulb"]:checked ~ span svg {
+        color: rgba(255, 255, 255, 1);
+        filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 7px #fff)
+          drop-shadow(0 0 10px #fff);
+      }
+      
+      @keyframes fan-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+     }
+      #fan:checked ~ span svg
+      {
+        animation: fan-spin 4s linear infinite;
+      }
+
+        .loader {
+          width: 65px;
+          aspect-ratio: 1;
+          position: relative;
+        }
+        .loader:before,
+        .loader:after {
+          content: "";
+          position: absolute;
+          border-radius: 50px;
+          box-shadow: 0 0 0 3px inset #fff;
+          animation: l4 2.5s infinite;
+        }
+        .loader:after {
+          animation-delay: -1.25s;
+        }
+        @keyframes l4 {
+          0% {
+            inset: 0 35px 35px 0;
+          }
+          12.5% {
+            inset: 0 35px 0 0;
+          }
+          25% {
+            inset: 35px 35px 0 0;
+          }
+          37.5% {
+            inset: 35px 0 0 0;
+          }
+          50% {
+            inset: 35px 0 0 35px;
+          }
+          62.5% {
+            inset: 0 0 0 35px;
+          }
+          75% {
+            inset: 0 0 35px 35px;
+          }
+          87.5% {
+            inset: 0 0 35px 0;
+          }
+          100% {
+            inset: 0 35px 35px 0;
+          }
+        }
+     
+    </style>
+  </head>
+  <body>
+    <div class="flex">
+      <div class="main">
+        <div class="loader"></div>
+        <div class="main-labels">
+          <label>
+            <input type="checkbox" id="bulb"/>
+            <span>
+              <svg viewBox="0 0 128 128"><defs><style>.cls-1{fill:#ffe082;}.cls-2{fill:#404040;}.cls-3{fill:#9e9e9e;}.cls-4{fill:#f5f5f5;}</style></defs><title/><path class="cls-1" d="M82,93V81.82a20.38,20.38,0,0,1,6.65-15.23,37,37,0,1,0-49.39-.09A20.59,20.59,0,0,1,46,81.82V92.59"/><path class="cls-2" d="M82,95a2,2,0,0,1-2-2V81.82A22.38,22.38,0,0,1,87.31,65.1,35,35,0,1,0,40.59,65,22.61,22.61,0,0,1,48,81.82V92.58a2,2,0,0,1-4,0V81.82A18.6,18.6,0,0,0,37.92,68,39,39,0,1,1,90,68.08a18.38,18.38,0,0,0-6,13.74V93A2,2,0,0,1,82,95Z"/><path class="cls-3" d="M82,92v16a18.05,18.05,0,0,1-18,18h0a18.05,18.05,0,0,1-18-18V92Z"/><path class="cls-2" d="M64,128a20,20,0,0,1-20-20V92a2,2,0,0,1,2-2H82a2,2,0,0,1,2,2v16A20,20,0,0,1,64,128ZM48,94v14a16,16,0,0,0,32,0V94Z"/><line class="cls-4" x1="54" x2="82" y1="102" y2="98"/><path class="cls-2" d="M54,104a2,2,0,0,1-.28-4l28-4a2,2,0,0,1,.57,4l-28,4Z"/><line class="cls-4" x1="54" x2="82" y1="110" y2="106"/><path class="cls-2" d="M54,112a2,2,0,0,1-.28-4l28-4a2,2,0,0,1,.57,4l-28,4Z"/></svg>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" id="fan"/>
+            <span>
+              <svg id="" viewBox="0 0 118.3 122.88"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><title>propeller</title><path class="cls-1" d="M74.42,82.21a55.16,55.16,0,0,1,.83,5.6c.88,9.5-2.15,16-2.44,24.55-.34,10.33,10.19,12,18.11,9.45A39.17,39.17,0,0,0,102,115.69a46.72,46.72,0,0,0,8.05-7.84c16.52-20.21,7.15-39.5-18.23-45.36A15.9,15.9,0,0,0,87,62.16v.41a21.59,21.59,0,0,1-6.34,15.3l-.33.31a21.59,21.59,0,0,1-5.9,4ZM65.34,46.59a16,16,0,1,1-16,16,16,16,0,0,1,16-16Zm9.58-3.43q1.55-1.86,3.27-3.59c6.73-6.76,13.69-8.6,20.43-13.83,8.16-6.33,2.74-15.52-4.31-20a38.89,38.89,0,0,0-11.78-4.6A46.61,46.61,0,0,0,71.35,0C45.25.22,36.41,19.75,48.13,43a15.51,15.51,0,0,0,2.56,3.65,21.58,21.58,0,0,1,24.23-3.5ZM43.75,61a56.16,56.16,0,0,1-6-2C28.91,55.39,24.49,49.71,17,45.56,8,40.53,1.68,49.12.36,57.34A38.91,38.91,0,0,0,.74,70,46.29,46.29,0,0,0,4,80.73c10.42,23.93,31.86,24.42,48.67,4.52A15.85,15.85,0,0,0,55,81.58a21.54,21.54,0,0,1-5-3.72h0a21.59,21.59,0,0,1-6.34-15.3q0-.82.06-1.62Z"/></svg>            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded",function (){
+        const loader = document.querySelector(".loader");
+        const main = document.querySelector(".main-labels");
+
+        loader.style.display = "none";
+
+
+      });
+    </script>
+
+  </body>
+</html>
